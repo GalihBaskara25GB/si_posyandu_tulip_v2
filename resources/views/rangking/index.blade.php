@@ -34,34 +34,14 @@
                 </tr>
               </thead>
               <tbody>
+              @foreach ($objekKriterias as $objekKriteria)
+              
                 <tr>
-                  <td>Pendidikan</td>
-                  <td>{{ $ahp->matrix[$i=0]->avg }}</td>
+                  <td>{{ $objekKriteria->name }}</td>
+                  <td>{{ $ahp->matrix[$objekKriteria->id]->avg }}</td>
                 </tr>
-                <tr>
-                  <td>Keaktifan Sosial</td>
-                  <td>{{ $ahp->matrix[++$i]->avg }}</td>
-                </tr>
-                <tr>
-                  <td>Kepribadian</td>
-                  <td>{{ $ahp->matrix[++$i]->avg }}</td>
-                </tr>
-                <tr>
-                  <td>Penyakit Berat</td>
-                  <td>{{ $ahp->matrix[++$i]->avg }}</td>
-                </tr>
-                <tr>
-                  <td>Pengetahuan Kesehatan</td>
-                  <td>{{ $ahp->matrix[++$i]->avg }}</td>
-                </tr>
-                <tr>
-                  <td>Keahlian Komputer</td>
-                  <td>{{ $ahp->matrix[++$i]->avg }}</td>
-                </tr>
-                <tr>
-                  <td>Kepemilikan HP</td>
-                  <td>{{ $ahp->matrix[++$i]->avg }}</td>
-                </tr>
+
+              @endforeach
               </tbody>
             </table>
           </div>

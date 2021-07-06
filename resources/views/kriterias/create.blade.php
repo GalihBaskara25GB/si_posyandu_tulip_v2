@@ -6,7 +6,7 @@
     @include('partials.alert')
   @endif
 
-  @include('partials.quickaction')
+  @include('kriterias.quickaction')
   @include('modals.kader')
 
   <!-- <div class="row">

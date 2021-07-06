@@ -37,9 +37,10 @@ class Pairwise extends Model
     public static function getPairwisematrixes()
     {
         $pairwises = Self::all();
-        $matrixValue[] = [];
+        // $matrixValue[] = [];
         foreach ($pairwises as $pairwise) {
             $matrixValue[$pairwise->from_kriteria][$pairwise->to_kriteria] = $pairwise->bobot;
+            // $matrixValue[$pairwise->fromObjekKriteria->name][$pairwise->toObjekKriteria->name] = $pairwise->bobot;
         }
         return $matrixValue;
     }

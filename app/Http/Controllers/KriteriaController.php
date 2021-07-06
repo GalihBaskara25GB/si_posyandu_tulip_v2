@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kriteria;
 use App\Models\Kader;
 use App\Models\ObjekKriteria;
+use App\Models\Pairwise;
 use App\Http\Requests\KriteriaRequest;
 
 use PDF;
@@ -118,6 +119,15 @@ class KriteriaController extends Controller
   
         return redirect()->route('kriterias.index')
                         ->with('success','Kriteria deleted successfully');
+    }
+
+    public function pairwise()
+    {
+        $pairwiseMatrix = Pairwise::getPairwiseMatrixes();
+        $objekKriterias = ObjekKriteria::orderBy('created_at', 'asc')->get();
+        $pairwises = Pairwise::all();
+        $message = null;
+        return view('pairwises.index',compact('pairwises', 'objekKriterias', 'message', 'pairwiseMatrix'));
     }
 
     public function generatePdf() {

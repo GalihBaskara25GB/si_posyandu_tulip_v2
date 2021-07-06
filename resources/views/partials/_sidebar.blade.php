@@ -30,12 +30,6 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{route('pairwises.index')}}">
-        <span class="menu-title">Data Pairwise</span>
-        <i class="icon-list menu-icon"></i>
-      </a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" href="{{route('kriterias.index')}}">
         <span class="menu-title">Data Kriteria</span>
         <i class="icon-layers menu-icon"></i>

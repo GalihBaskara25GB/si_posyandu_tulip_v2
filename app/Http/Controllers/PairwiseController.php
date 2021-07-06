@@ -53,7 +53,7 @@ class PairwiseController extends Controller
             }
         }
 
-        return redirect()->route('pairwises.index')
+        return redirect()->route('kriterias.pairwise')
             ->with('success','Pairwise created successfully.');
     }
 

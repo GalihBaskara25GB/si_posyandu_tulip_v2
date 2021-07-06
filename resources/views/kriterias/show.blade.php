@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('partials.quickaction')
+@include('kriterias.quickaction')
 
 <div class="row">
   <div class="col-12 grid-margin">

@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Kriterias Route
         Route::get('/kriterias/print_pdf', [KriteriaController::class, 'generatePdf']);
+        Route::get('/kriterias/pairwise', [KriteriaController::class, 'pairwise'])->name('kriterias.pairwise');
         Route::resource('kriterias', KriteriaController::class);
         
         //Rangkings Route

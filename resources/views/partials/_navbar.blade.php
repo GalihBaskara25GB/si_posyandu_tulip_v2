@@ -16,6 +16,7 @@
             && Request::segment(2) != 'create' 
             && Request::segment(2) != 'topsis' 
             && Request::segment(2) != 'ahp'  
+            && Request::segment(2) != 'pairwise'  
             && $i == 2) :
             echo 'Show';  
           continue;
