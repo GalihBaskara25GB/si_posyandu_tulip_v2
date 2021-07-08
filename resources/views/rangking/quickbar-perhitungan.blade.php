@@ -7,7 +7,7 @@
         </div>
         <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
           <div class="col-sm-12 col-md-4 p-3 text-center btn-wrapper">
-            <a href="{{ route(Request::segment(1).'.ahp') }}" class="btn px-0">
+            <a href="{{ route(Request::segment(1).'.proses') }}" class="btn px-0">
               <i class="icon-calculator mr-2"></i> Proses Data
             </a>
           </div>

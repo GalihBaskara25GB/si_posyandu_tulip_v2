@@ -7,10 +7,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body bg-white">
         <div class="row">
           <div class="table-responsive border rounded p-1">
-            <table class="table" id="modal-tabel">
+            <table class="table table-hover display" id="modal-tabel">
               <thead>
                 <tr>
                   <th class="font-weight-bold">#</th>

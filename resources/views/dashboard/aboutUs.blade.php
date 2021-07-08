@@ -27,10 +27,9 @@
         kepada masyarakat. Jika anda tertarik untuk menjadi kader Posyandu anda bisa mendaftar secara online atau
         mendatangi kantor Posyandu Tulip Desa Kemantrenrejo untuk mengetahui instruksi lebih lanjut
         </p>
-        <table class="table table-no-border">
-          <tr>
-          <td colspan="2"><h4><center>Posyandu Tulip</center></h4></td>
-          </tr>
+        <hr>
+        <h4><center>Posyandu Tulip</center></h4>
+        <table class="table table-responsive table-no-border">
           <tr>
           <td>Alamat</td>
           <td>Desa Kemantrenrejo, Kecamatan Rejoso, Kabupaten Pasuruan, 67181</td>

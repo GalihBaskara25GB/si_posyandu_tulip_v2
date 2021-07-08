@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Kader;
-use App\Models\Kriteria;
+use App\Models\ObjekKriteria;
 use App\Models\Rangking;
   
 class HomeController extends Controller
@@ -16,8 +16,8 @@ class HomeController extends Controller
         if(Auth::user()->isAdmin()) {
             $user = User::all()->count();
             $kader = Kader::all()->count();
-            $kriteria = Kriteria::all()->count();
-            return view('dashboard.admin', compact('user', 'kader', 'kriteria'));
+            $objekKriteria = ObjekKriteria::all()->count();
+            return view('dashboard.admin', compact('user', 'kader', 'objekKriteria'));
         }
         return view('dashboard.user');
     }

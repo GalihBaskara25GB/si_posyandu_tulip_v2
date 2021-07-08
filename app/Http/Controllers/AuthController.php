@@ -33,7 +33,7 @@ class AuthController extends Controller
   
         $messages = [
             'email.required'        => 'Email wajib diisi',
-            'password.string'       => 'Password harus berupa string'
+            'password.string'       => 'Password harus berupa huruf atau angka'
         ];
   
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -52,7 +52,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             return redirect()->route('home');
         } else {
-            Session::flash('error', 'Email atau password salah');
+            Session::flash('error', 'Username atau Password salah');
             return redirect()->route('login');
         }
   

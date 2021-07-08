@@ -41,7 +41,7 @@ class Kriteria extends Model
         $kriteria = Kriteria::select(DB::raw('kader_id, group_concat(objek_kriteria_id) as obj_id, group_concat(nilai) as nilais'))
                                     ->groupBy('kriterias.kader_id')                        
                                     ->get();
-                                    
+        if (count($kriteria) == 0) return false;                            
         foreach($kriteria->toArray() as $a){
             $objek = explode(',', $a['obj_id']);
             $nilai = explode(',', $a['nilais']);

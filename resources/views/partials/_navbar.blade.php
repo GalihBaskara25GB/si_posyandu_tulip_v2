@@ -15,7 +15,7 @@
         if(    $numSegments == 2 
             && Request::segment(2) != 'create' 
             && Request::segment(2) != 'topsis' 
-            && Request::segment(2) != 'ahp'  
+            && Request::segment(2) != 'proses'  
             && Request::segment(2) != 'pairwise'  
             && $i == 2) :
             echo 'Show';  

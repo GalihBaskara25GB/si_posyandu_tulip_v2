@@ -26,7 +26,7 @@
     <li class="nav-item">
       <a class="nav-link" href="{{route('objekKriterias.index')}}">
         <span class="menu-title">Data Objek Kriteria</span>
-        <i class="icon-docs menu-icon"></i>
+        <i class="icon-list menu-icon"></i>
       </a>
     </li>
     <li class="nav-item">

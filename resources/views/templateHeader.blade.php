@@ -13,6 +13,7 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/chartist/chartist.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->

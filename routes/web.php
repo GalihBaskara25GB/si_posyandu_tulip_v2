@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('kriterias', KriteriaController::class);
         
         //Rangkings Route
-        Route::get('rangkings/ahp', [RangkingController::class, 'index'])->name('rangkings.ahp');
+        Route::get('rangkings/proses', [RangkingController::class, 'index'])->name('rangkings.proses');
         Route::get('rangkings/print_pdf', [RangkingController::class, 'generatePdf']);
         Route::get('rangkings/topsis', [RangkingController::class, 'index'])->name('rangkings.topsis');
         Route::resource('rangkings', RangkingController::class);

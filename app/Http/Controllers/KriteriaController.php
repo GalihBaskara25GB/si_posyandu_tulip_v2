@@ -29,7 +29,7 @@ class KriteriaController extends Controller
         $kriterias = Kriteria::select('kader_id')->groupBy('kader_id')->paginate($dataPerPage);
         $rowByKaderId = Kriteria::getRowByKaderId();
 
-        $numRecords = Kriteria::count();
+        $numRecords = (!$rowByKaderId) ? 0 : count($rowByKaderId);
         $message = null;
 
         if(isset($request->field) && isset($request->keyword)) {
@@ -113,7 +113,7 @@ class KriteriaController extends Controller
                         ->with('success','Kriteria updated successfully');
     }
    
-    public function destroy($ader_id)
+    public function destroy($kader_id)
     {
         Kriteria::where('kader_id', '=', $kader_id)->delete();
   

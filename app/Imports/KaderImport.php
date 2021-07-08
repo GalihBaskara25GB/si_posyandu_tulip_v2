@@ -4,7 +4,7 @@ namespace App\Imports;
 
 use App\Models\Kader;
 use App\Models\Kriteria;
-// use Maatwebsite\Excel\Concerns\ToModel;
+use App\Models\ObjekKriteria;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
@@ -24,16 +24,17 @@ class KaderImport implements ToCollection
                 'is_verified' => 0
             ]);
 
-            Kriteria::create([
-                'pendidikan' => $row[6],
-                'penyakit_berat' => $this->convertToScalar('penyakit_berat', $row[9]),
-                'pengetahuan_kesehatan' => $row[10],
-                'keaktifan_sosial' => $row[11],
-                'keahlian_komputer' => $this->convertToScalar('keahlian_komputer', $row[13]),
-                'kepribadian' => $row[14],
-                'mempunyai_hp' => $this->convertToScalar('mempunyai_hp', $row[15]),
-                'kader_id' => $kader->id
-            ]);
+            $objekKriterias = ObjekKriteria::orderBy('created_at', 'asc')->get();
+
+            $i=6;
+            foreach ($objekKriterias as $key) {
+                Kriteria::create([
+                    'objek_kriteria_id' => $key->id,
+                    'kader_id' => $kader->id,
+                    'nilai' => $row[$i]
+                ]);
+                $i++;
+            }
         }
     }
 
@@ -60,6 +61,7 @@ class KaderImport implements ToCollection
 
     function getDateOrPlace($option, $val)
     {
+        // dd($val);
         $string = explode(',', $val);
         $placeOfBirth = $string[0];
         $date = explode('-', $string[1]);

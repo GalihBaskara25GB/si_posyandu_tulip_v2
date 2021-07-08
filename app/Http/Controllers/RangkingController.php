@@ -23,15 +23,15 @@ class RangkingController extends Controller
     {
         //
         $dataPerPage = 10;
+        
+        $ahp = $this->ahp();
+        $topsis = $this->topsis();
 
         $rangkings = Rangking::orderBy('nilai_preferensi', 'desc')->paginate($dataPerPage);
         $objekKriterias = ObjekKriteria::orderBy('created_at', 'asc')->get();
 
         $numRecords = Rangking::count();
         $message = null;
-
-        $ahp = $this->ahp();
-        $topsis = $this->topsis();
 
         if(isset($request->field) && isset($request->keyword)) {
             $field = $request->field;
@@ -278,6 +278,8 @@ class RangkingController extends Controller
 
         $matrix = Kriteria::all();
         $rowByKaderId = Kriteria::getRowByKaderId();
+        if($rowByKaderId==false) return ((object) array('resultView' => $resultView, 'status' => false));
+
         $convertedRow = $rowByKaderId;
         foreach ($rowByKaderId as $key => $value) {
             foreach ($value as $key2 => $value2) {
@@ -456,7 +458,8 @@ class RangkingController extends Controller
         }
 
         $res = (object) array(
-            'resultView' => $resultView
+            'resultView' => $resultView,
+            'status' => true
         );
         return $res;
     }

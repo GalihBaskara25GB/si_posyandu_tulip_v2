@@ -26,12 +26,12 @@
           </div>
           <div class="col-md-6 col-xl report-inner-card">
             <div class="inner-card-text">
-              <span class="report-title">Total Kriteria</span>
-              <h4>{{ $kriteria }}</h4>
-              <span class="report-count">Kriteria</span>
+              <span class="report-title">Total Objek Kriteria</span>
+              <h4>{{ $objekKriteria }}</h4>
+              <span class="report-count">Objek Kriteria</span>
             </div>
             <div class="inner-card-icon bg-danger">
-              <i class="icon-layers"></i>
+              <i class="icon-list"></i>
             </div>
           </div>
           <div class="col-md-6 col-xl report-inner-card">
