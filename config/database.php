@@ -46,7 +46,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'http://sql6.freemysqlhosting.net/'),
+            'host' => env('DB_HOST', 'sql6.freemysqlhosting.net'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'sql6423800'),
             'username' => env('DB_USERNAME', 'sql6423800'),
