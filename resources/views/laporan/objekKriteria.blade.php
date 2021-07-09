@@ -29,8 +29,7 @@
         <tr>
 					<th class="font-weight-bold">{{ $i++ }}</th>
 					<td>{{ $objekKriteria->name }}</td>
-					<td>
-					<td>
+					<td class="pl-2">
 						@php
 							$types = explode('_', strtoupper($objekKriteria->type));
 							foreach($types as $type) {
