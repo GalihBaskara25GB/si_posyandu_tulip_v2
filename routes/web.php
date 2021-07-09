@@ -45,31 +45,31 @@ Route::group(['middleware' => 'auth'], function () {
     //Admins Page
     Route::group(['middleware' => ['checkIfAdmin:administrator']], function () {
         //Kaders Route
-        Route::get('/kaders/print_pdf', [KaderController::class, 'generatePdf']);
+        Route::get('/kaders/print_pdf', [KaderController::class, 'generatePdf'])->name('kaders.print_pdf');
         Route::resource('kaders', KaderController::class);
         Route::post('kaders/import', [KaderController::class, 'import'])->name('kaders.import');
         
         //Users Route
-        Route::get('/users/print_pdf', [UserController::class, 'generatePdf']);
+        Route::get('/users/print_pdf', [UserController::class, 'generatePdf'])->name('users.print_pdf');
         Route::resource('users', UserController::class);
 
         //Kriterias Route
-        Route::get('/kriterias/print_pdf', [KriteriaController::class, 'generatePdf']);
+        Route::get('/kriterias/print_pdf', [KriteriaController::class, 'generatePdf'])->name('kriterias.print_pdf');
         Route::get('/kriterias/pairwise', [KriteriaController::class, 'pairwise'])->name('kriterias.pairwise');
         Route::resource('kriterias', KriteriaController::class);
         
         //Rangkings Route
         Route::get('rangkings/proses', [RangkingController::class, 'index'])->name('rangkings.proses');
-        Route::get('rangkings/print_pdf', [RangkingController::class, 'generatePdf']);
+        Route::get('rangkings/print_pdf', [RangkingController::class, 'generatePdf'])->name('rangkings.print_pdf');
         Route::get('rangkings/topsis', [RangkingController::class, 'index'])->name('rangkings.topsis');
         Route::resource('rangkings', RangkingController::class);
 
         //Objek Kriterias Route
-        Route::get('/objekKriterias/print_pdf', [ObjekKriteriaController::class, 'generatePdf']);
+        Route::get('/objekKriterias/print_pdf', [ObjekKriteriaController::class, 'generatePdf'])->name('objekKriterias.print_pdf');
         Route::resource('objekKriterias', ObjekKriteriaController::class);
 
         //Pairwises Route
-        Route::get('/pairwises/print_pdf', [PairwiseController::class, 'generatePdf']);
+        Route::get('/pairwises/print_pdf', [PairwiseController::class, 'generatePdf'])->name('pairwises.print_pdf');
         Route::resource('pairwises', PairwiseController::class);
     });
  

@@ -17,7 +17,7 @@
             </a>
           </div>
           <div class="col-sm-12 col-md-4 p-3 text-center btn-wrapper">
-            <a href="{{ Request::segment(1).'/print_pdf' }}" target="_blank" class="btn px-0">
+            <a href="{{ route(Request::segment(1).'.print_pdf') }}" target="_blank" class="btn px-0">
               <i class="icon-doc mr-2"></i> Laporan
             </a>
           </div>
