@@ -9,6 +9,7 @@ use App\Models\Kriteria;
 use App\Models\Pairwise;
 use App\Models\Kader;
 use App\Models\ObjekKriteria;
+use Illuminate\Support\Str;
 
 use PDF;
 
@@ -25,7 +26,7 @@ class RangkingController extends Controller
         $dataPerPage = 10;
         
         $ahp = $this->ahp();
-        $topsis = $this->topsis();
+        $topsis = $this->topsis($ahp);
 
         $rangkings = Rangking::orderBy('nilai_preferensi', 'desc')->paginate($dataPerPage);
         $objekKriterias = ObjekKriteria::orderBy('created_at', 'asc')->get();
@@ -268,15 +269,14 @@ class RangkingController extends Controller
         return $res;
     }
 
-    public function topsis()
+    public function topsis($dataAHP)
     {
-        $dataAHP = $this->ahp();
         $kriteria = $dataAHP->matrix;
         $resultView = $dataAHP->resultView;
         $objekKriterias = ObjekKriteria::orderBy('created_at', 'asc')->get();
+        $kaders = Kader::all();
         $numObjekKriteria = count($objekKriterias);
 
-        $matrix = Kriteria::all();
         $rowByKaderId = Kriteria::getRowByKaderId();
         if($rowByKaderId==false) return ((object) array('resultView' => $resultView, 'status' => false));
 
@@ -284,9 +284,9 @@ class RangkingController extends Controller
         foreach ($rowByKaderId as $key => $value) {
             foreach ($value as $key2 => $value2) {
                 $convertedRow[$key][$key2] = $this->convertToScalar(
-                    ObjekKriteria::where('id','=',$key2)->first()->type, 
+                    $objekKriterias->where('id','=',$key2)->first()->type, 
                     $value2,
-                    (ObjekKriteria::where('id','=',$key2)->first()->name=='Penyakit Berat') ? true : false
+                    ($objekKriterias->where('id','=',$key2)->first()->name=='Penyakit Berat') ? true : false
                 ); 
             }
         }
@@ -300,7 +300,7 @@ class RangkingController extends Controller
         }
         $resultView .= "</tr></thead><tbody>";
         foreach ($convertedRow as $key => $value) {
-            $resultView .= "<tr><td>".Kader::where('id','=',$key)->first()->nama."</td>";
+            $resultView .= "<tr><td>".$kaders->where('id','=',$key)->first()->nama."</td>";
             foreach ($objekKriterias as $objekKriteria) {
                 foreach ($value as $key2 => $value2) {
                     if($key2==$objekKriteria->id) $resultView .= "<td>".$value2."</td>";
@@ -362,7 +362,7 @@ class RangkingController extends Controller
 
         foreach ($matrixNormalisasi as $key) {
             $resultView .= "<tr>
-                <td>".Kader::where('id', '=', $key->kader_id)->first()->nama."</td>";
+                <td>".$kaders->where('id', '=', $key->kader_id)->first()->nama."</td>";
                 foreach ($objekKriterias as $objekKriteria) {
                     $resultView .= "<td><center>".$key->{$objekKriteria->id}."</center></td>";
                 }
@@ -377,7 +377,7 @@ class RangkingController extends Controller
         $resultView .= "</tr></thead><tbody>";
         foreach ($bobotNormalisasi as $key) {
             $resultView .= "<tr>
-            <td>".Kader::where('id', '=', $key->kader_id)->first()->nama."</td>";
+            <td>".$kaders->where('id', '=', $key->kader_id)->first()->nama."</td>";
             foreach ($objekKriterias as $objekKriteria) {
                 $resultView .= "<td><center>".$key->{$objekKriteria->id}."</center></td>";
             }
@@ -432,6 +432,7 @@ class RangkingController extends Controller
             }
             $solusiIdeal[$i]['positif'] = sqrt($solusiIdeal[$i]['positif']);
             $solusiIdeal[$i]['negatif'] = sqrt($solusiIdeal[$i]['negatif']);
+            $solusiIdeal[$i]['preferensi'] = $solusiIdeal[$i]['negatif'] / ($solusiIdeal[$i]['negatif'] + $solusiIdeal[$i]['positif']);
             $i++;
         }
 
@@ -440,22 +441,26 @@ class RangkingController extends Controller
         $i=0;
         foreach ($solusiIdeal as $key) {
                 $resultView .= "<tr>
-                    <td>".Kader::where('id', '=', $key['kader_id'])->first()->nama."</td>
+                    <td>".$kaders->where('id', '=', $key['kader_id'])->first()->nama."</td>
                     <td><center>".$key['positif']."</center></td>
                     <td><center>".$key['negatif']."</center></td>
-                    <td><center>".($key['negatif'] / ($key['negatif'] + $key['positif']))."</center></td>
+                    <td><center>".$key['preferensi']."</center></td>
                 </tr>";
                 $i++;
         }
         $resultView .= '</thead></table>';
 
+        
         Rangking::truncate();
+        $dataRangkings = array();
         for ($i = 0; $i < count($solusiIdeal); $i++) {
-            $pref = new Rangking;
-            $pref->kader_id = $solusiIdeal[$i]['kader_id'];
-            $pref->nilai_preferensi = $solusiIdeal[$i]['negatif'] / ($solusiIdeal[$i]['negatif'] + $solusiIdeal[$i]['positif']);
-            $pref->save();
+            $dataRangkings[$i] = array(
+                'id' => (string) Str::uuid(),
+                'kader_id' => $solusiIdeal[$i]['kader_id'],
+                'nilai_preferensi' => $solusiIdeal[$i]['preferensi']
+            );
         }
+        Rangking::insert($dataRangkings);
 
         $res = (object) array(
             'resultView' => $resultView,
