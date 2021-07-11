@@ -27,7 +27,8 @@
 			@php $i=1 @endphp
 			@foreach ($rangkings as $rangking)
         <tr>
-					<th>{{$rangking->getRank()}}</th>
+					<!-- <th>{{$rangking->getRank()}}</th> -->
+					<th>{{$i++}}</th>
 					<th>{{$rangking->nilai_preferensi}}</th>
 					<th>{{$rangking->kader->nama}}</th>
 					<th>{{$rangking->kader->nomor_telepon}}</th>
