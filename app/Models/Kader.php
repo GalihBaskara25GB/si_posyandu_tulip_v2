@@ -38,4 +38,9 @@ class Kader extends Model
     {
         return $this->hasMany('App\Models\Kriteria');
     }
+
+    public function rangking()
+    {
+        return $this->hasMany('App\Models\Rangking');
+    }
 }

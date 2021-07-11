@@ -19,7 +19,7 @@
 			<tr>
         <th class="font-weight-bold">#</th>
         <th class="font-weight-bold">Nama</th>
-        <th class="font-weight-bold">Status</th>
+        <!-- <th class="font-weight-bold">Status</th> -->
 				@foreach ($objekKriterias as $objekKriteria)
 					<th class="font-weight-bold">{{ $objekKriteria->name }}</th>
 				@endforeach
@@ -31,7 +31,7 @@
         <tr>
 					<th class="font-weight-bold">{{ $i++ }}</th>
 					<td>{{ $kriteria->kader->nama }}</td>
-					<td>{{ ($kriteria->kader->is_verified) ? 'Sudah' : 'Belum' }} Diverifikasi</td>
+					<!-- <td>{{ ($kriteria->kader->is_verified) ? 'Sudah' : 'Belum' }} Diverifikasi</td> -->
 					@foreach ($objekKriterias as $objekKriteria)
 					@php
 						echo '<td>'.$rowByKaderId[$kriteria->kader_id][$objekKriteria->id].'</td>';
