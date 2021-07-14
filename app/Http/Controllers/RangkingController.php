@@ -126,7 +126,7 @@ class RangkingController extends Controller
         $rangkings = Rangking::orderBy('nilai_preferensi', 'desc')->get();
         $pdf = PDF::loadview('laporan.rangking', ['rangkings' => $rangkings]);
         $pdf->setPaper('A4', 'landscape');
-        return $pdf->download('laporan-rangking');
+        return $pdf->download('laporan-rangking.pdf');
     } 
 
     public function ahp()

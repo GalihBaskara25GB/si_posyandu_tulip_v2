@@ -75,6 +75,6 @@ class ObjekKriteriaController extends Controller
     public function generatePdf() {
         $objekKriterias = ObjekKriteria::all();
         $pdf = PDF::loadview('laporan.objekKriteria', ['objekKriterias' => $objekKriterias]);
-        return $pdf->download('laporan-objekKriteria');
+        return $pdf->download('laporan-objekKriteria.pdf');
     } 
 }

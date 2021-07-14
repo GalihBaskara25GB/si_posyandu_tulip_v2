@@ -105,6 +105,6 @@ class UserController extends Controller
     public function generatePdf() {
         $users = User::all();
         $pdf = PDF::loadview('laporan.user', ['users' => $users]);
-        return $pdf->download('laporan-user');
+        return $pdf->download('laporan-user.pdf');
     } 
 }

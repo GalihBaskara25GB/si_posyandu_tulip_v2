@@ -77,7 +77,7 @@ class KaderController extends Controller
     public function generatePdf() {
         $kaders = Kader::all();
         $pdf = PDF::loadview('laporan.kader', ['kaders' => $kaders]);
-        return $pdf->download('laporan-kader');
+        return $pdf->download('laporan-kader.pdf');
     } 
 
     public function import() 

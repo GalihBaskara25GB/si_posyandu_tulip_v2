@@ -139,6 +139,6 @@ class KriteriaController extends Controller
                                                     'rowByKaderId' => $rowByKaderId,
                                                     'objekKriterias' => $objekKriterias]);
         $pdf->setPaper('A4', 'landscape');
-        return $pdf->download('laporan-kriteria');
+        return $pdf->download('laporan-kriteria.pdf');
     } 
 }
