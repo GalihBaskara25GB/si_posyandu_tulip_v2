@@ -29,7 +29,8 @@
         </p>
         <hr>
         <h4><center>Posyandu Tulip</center></h4>
-        <table class="table table-responsive table-no-border">
+        <div class="table-responsive">
+        <table class="table table-no-border">
           <tr>
           <td>Alamat</td>
           <td>Desa Kemantrenrejo, Kecamatan Rejoso, Kabupaten Pasuruan, 67181</td>
@@ -39,8 +40,51 @@
           <td>Senin s/d Sabtu, 08.00 WIB - 14.00 WIB</td>
           </tr>
         </table>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="col-md-12 grid-margin stretch-card mt-3">
+    <div class="card">
+      <div class="card-body performane-indicator-card">
+        <div class="d-sm-flex">
+          <h4 class="card-title flex-shrink-1">Kontak Pengembang</h4>
+        </div>
+
+        <div class="table-responsive">
+        <table class="table table-no-border">
+          <tr>
+          <td>Nama</td>
+          <td>Galih Aditya Baskara</td>
+          </tr>
+          <tr>
+          <td>Email</td>
+          <td>galihbaskara25.gb@gmail.com</td>
+          </tr>
+          <tr>
+          <td>Whatsapp</td>
+          <td><a href="https://api.whatsapp.com/send?phone=+6282257934698">+6282257934698</a></td>
+          </tr>
+          <td>Instagram</td>
+          <td><a href="https://www.instagram.com/baskara.galih/">@baskara.galih</a></td>
+          </tr>
+          </tr>
+          <td>Bahasa Dikuasai</td>
+          <td>NodeJs, PHP, Python, Javascript, Java</td>
+          </tr>
+          </tr>
+          <td>Framework Dikuasai</td>
+          <td>Express Js, React Js, Vue Js, Django, Laravel, Codeigniter, Bootstrap, Jquery</td>
+          </tr>
+          <td>Database Dikuasai</td>
+          <td>MongoDB, MySQL, SQLite, SQL Server</td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 @endsection
