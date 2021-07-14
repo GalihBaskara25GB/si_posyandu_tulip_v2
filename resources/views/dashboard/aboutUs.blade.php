@@ -66,19 +66,9 @@
           <td>Whatsapp</td>
           <td><a href="https://api.whatsapp.com/send?phone=+6282257934698">+6282257934698</a></td>
           </tr>
+          <tr>
           <td>Instagram</td>
           <td><a href="https://www.instagram.com/baskara.galih/">@baskara.galih</a></td>
-          </tr>
-          </tr>
-          <td>Bahasa Dikuasai</td>
-          <td>NodeJs, PHP, Python, Javascript, Java</td>
-          </tr>
-          </tr>
-          <td>Framework Dikuasai</td>
-          <td>Express Js, React Js, Vue Js, Django, Laravel, Codeigniter, Bootstrap, Jquery</td>
-          </tr>
-          <td>Database Dikuasai</td>
-          <td>MongoDB, MySQL, SQLite, SQL Server</td>
           </tr>
         </table>
         </div>
