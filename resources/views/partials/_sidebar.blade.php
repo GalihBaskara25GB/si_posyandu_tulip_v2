@@ -58,6 +58,12 @@
         <i class="icon-info menu-icon"></i>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('about')}}">
+        <span class="menu-title">Sign Out</span>
+        <i class="icon-power menu-icon"></i>
+      </a>
+    </li>
 
   </ul>
 </nav>
