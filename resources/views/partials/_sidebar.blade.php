@@ -59,7 +59,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{route('about')}}">
+      <a class="nav-link" href="{{route('logout')}}">
         <span class="menu-title">Sign Out</span>
         <i class="icon-power menu-icon"></i>
       </a>
