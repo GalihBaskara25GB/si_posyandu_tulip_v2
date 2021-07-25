@@ -33,10 +33,10 @@
         <input type="search" class="form-control" placeholder="Search Here" title="Search here">
       </form>
       
-      <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
+      <li class="nav-item dropdown d-xl-inline-flex user-dropdown">
         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
           <img class="img-xs rounded-circle ml-2" src="{{asset('assets/images/avatar/avatar-blue-circle.png')}}" alt="Profile image">
-          <span class="font-weight-normal">{{ Auth::user()->kader->nama }}</span>
+          <span class="font-weight-normal d-none d-xl-inline">{{ Auth::user()->kader->nama }}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <div class="dropdown-header text-center">
@@ -45,10 +45,10 @@
               src="{{asset('assets/images/avatar/avatar-blue-circle.png')}}" 
               alt="Profile image"
               width="100">
-            <p class="mb-1 mt-3">{{ Auth::user()->kader->nama }}|{{ Auth::user()->username }} </p>
+            <p class="mb-1 mt-3">{{ Auth::user()->kader->nama }}</p>
             <p class="font-weight-light text-muted mb-0">{{ ucfirst(Auth::user()->role) }}</p>
           </div>
-          <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile</a>
+          <a class="dropdown-item" href="{{route('profile')}}"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile</a>
           <a class="dropdown-item" href="{{route('logout')}}">
             <i class="dropdown-item-icon icon-power text-primary"></i>Sign Out
           </a>

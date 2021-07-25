@@ -10,6 +10,7 @@ use App\Http\Controllers\RangkingController;
 use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\ObjekKriteriaController;
 use App\Http\Controllers\PairwiseController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,11 @@ Route::post('register', [AuthController::class, 'register']);
 Route::get('ahp', [PerhitunganController::class, 'ahp'])->name('ahp');
 Route::get('topsis', [PerhitunganController::class, 'topsis'])->name('topsis');
 
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::get('about', [HomeController::class, 'aboutUs'])->name('about');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
 
     //Users Page
     Route::group(['middleware' => ['checkIfAdmin:user']], function () {
@@ -71,6 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
         //Pairwises Route
         Route::get('/pairwises/print_pdf', [PairwiseController::class, 'generatePdf'])->name('pairwises.print_pdf');
         Route::resource('pairwises', PairwiseController::class);
+
     });
  
 });
