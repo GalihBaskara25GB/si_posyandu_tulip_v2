@@ -65,7 +65,7 @@
               <thead>
                 <tr>
                   <th class="font-weight-bold">Rangking</th>
-                  <th class="font-weight-bold">Nilai Preferensi</th>
+                  <!-- <th class="font-weight-bold">Nilai Preferensi</th> -->
                   <th class="font-weight-bold">Nama Kader</th>
                 </tr>
               </thead>
@@ -76,7 +76,7 @@
               @foreach ($rangkings as $rangking)
                 <tr>
                   <td>{{(is_null(Request::__get('field'))) ? $i++ : $rangking->getRank()}}</td>
-                  <td>{{$rangking->nilai_preferensi}}</td>
+                  <!-- <td>{{$rangking->nilai_preferensi}}</td> -->
                   <td>{{$rangking->kader->nama}}</td>
                 </tr>
               @endforeach

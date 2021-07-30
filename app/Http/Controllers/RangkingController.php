@@ -191,10 +191,17 @@ class RangkingController extends Controller
 
         $lambdaMax = $sumEigenMax / $numObjekKriteria;
         $newCI = ($lambdaMax - $numObjekKriteria) / $numObjekKriteria ;
-        $indexRatio = 1.32;
+        $arrIndexRatio = [0, 0, 0, 0.58, 0.90, 1.12, 1.24, 1.32, 1.41, 1.45, 1.49, 1.51, 1.48, 1.56, 1.57, 1.59];
+        $indexRatio = $arrIndexRatio[$numObjekKriteria];
+        // $indexRatio = 1.32;
         $newCR = $newCI / $indexRatio;
 
-        foreach ($sintesa as $key => $value) {
+        // foreach ($sintesa as $key => $value) {
+        //     $matrix3[$key]->avg = $value;
+        // }
+
+        
+        foreach ($bobotPrioritas as $key => $value) {
             $matrix3[$key]->avg = $value;
         }
 
@@ -264,14 +271,20 @@ class RangkingController extends Controller
             'ci'     => $newCI,
             'cr'     => $newCR,
             'matrix' => $matrix3,
-            'resultView' => $resultView
+            'resultView' => $resultView,
+            'bobot_prioritas' => $bobotPrioritas
         );
+
         return $res;
+
     }
 
     public function topsis($dataAHP)
     {
         $kriteria = $dataAHP->matrix;
+        $kriteria2 = $dataAHP->bobot_prioritas;
+        // dd($kriteria2);
+
         $resultView = $dataAHP->resultView;
         $objekKriterias = ObjekKriteria::orderBy('created_at', 'asc')->get();
         $kaders = Kader::all();
@@ -340,6 +353,7 @@ class RangkingController extends Controller
             $bobotNormalisasi[$i]->kader_id = $key;
             foreach ($value as $key2 => $value2) {
                 $matrixNormalisasi[$i]->$key2 = $value2 / $pembagi[$key2];
+                // $bobotNormalisasi[$i]->$key2 = $matrixNormalisasi[$i]->$key2 * $kriteria2[$key2];
                 $bobotNormalisasi[$i]->$key2 = $matrixNormalisasi[$i]->$key2 * $kriteria[$key2]->avg;
             } 
             $i++;

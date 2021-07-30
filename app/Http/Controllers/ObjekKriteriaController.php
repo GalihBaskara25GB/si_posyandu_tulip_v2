@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ObjekKriteria;
+use App\Models\Kriteria;
+use App\Models\Kader;
 use App\Http\Requests\ObjekKriteriaRequest;
 
 
@@ -40,8 +42,15 @@ class ObjekKriteriaController extends Controller
   
     public function store(ObjekKriteriaRequest $request)
     {   
-        ObjekKriteria::create($request->all());
-         
+        $objekKriteria = ObjekKriteria::create($request->all());
+        $tipes = explode('_', strtoupper($request->type));
+        // dd($tipes);
+        $kaders = Kader::all();
+        foreach ($kaders as $kader) {
+            Kriteria::create(['objek_kriteria_id' => $objekKriteria->id,
+                                'kader_id' => $kader->id,
+                                'nilai' => $tipes[0]]);
+        } 
         return redirect()->route('objekKriterias.index')
                         ->with('success','Objek Kriteria created successfully.');
     }
@@ -67,7 +76,6 @@ class ObjekKriteriaController extends Controller
     public function destroy(ObjekKriteria $objekKriteria)
     {
         $objekKriteria->delete();
-  
         return redirect()->route('objekKriterias.index')
                         ->with('success','Objek Kriteria deleted successfully');
     }

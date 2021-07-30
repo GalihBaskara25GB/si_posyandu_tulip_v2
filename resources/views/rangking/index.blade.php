@@ -116,9 +116,9 @@
                       href="https://api.whatsapp.com/send?phone={{substr($rangking->kader->nomor_telepon, 1)}}&text=Hai+{{str_replace(' ', '+', $rangking->kader->nama)}}" class="btn btn-sm btn-success">
                       Hubungi Via Whatsapp
                     </a>
-                    <a href="#" class="btn btn-sm btn-outline-info">
+                    <!-- <a href="#" class="btn btn-sm btn-outline-info">
                       Masukkan Dalam Daftar Diterima
-                    </a>
+                    </a> -->
                   </td>
                 </tr>
                 @endforeach
