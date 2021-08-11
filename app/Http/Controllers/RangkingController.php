@@ -189,8 +189,13 @@ class RangkingController extends Controller
             $sumEigenMax += $eigenMax[$key]; 
         }
 
-        $lambdaMax = $sumEigenMax / $numObjekKriteria;
-        $newCI = ($lambdaMax - $numObjekKriteria) / $numObjekKriteria ;
+        $lambdaMax = 0;
+        foreach ($sum as $key => $value) {
+            $lambdaMax += $value * $bobotPrioritas[$key];
+        }
+
+        // $lambdaMax = $sumEigenMax / $numObjekKriteria;
+        $newCI = ($lambdaMax - $numObjekKriteria) / ($numObjekKriteria - 1) ;
         $arrIndexRatio = [0, 0, 0, 0.58, 0.90, 1.12, 1.24, 1.32, 1.41, 1.45, 1.49, 1.51, 1.48, 1.56, 1.57, 1.59];
         $indexRatio = $arrIndexRatio[$numObjekKriteria];
         // $indexRatio = 1.32;
@@ -286,6 +291,16 @@ class RangkingController extends Controller
         // dd($kriteria2);
 
         $resultView = $dataAHP->resultView;
+
+        if($dataAHP->status == 'TIDAK KONSISTEN') {
+            $resultView .= '<hr/><h3>Bobot Tidak Konsisten, Silahkan Ubah Matriks Pairwise';
+            $res = (object) array(
+                'resultView' => $resultView,
+                'status' => false
+            );
+            return $res; 
+        }
+
         $objekKriterias = ObjekKriteria::orderBy('created_at', 'asc')->get();
         $kaders = Kader::all();
         $numObjekKriteria = count($objekKriterias);
