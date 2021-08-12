@@ -219,10 +219,10 @@ class RangkingController extends Controller
         }
 
         $resultView .= "<th><center>Eigen Value</center></th>
-                            <th><center>Bobot Prioritas</center></th>
-                            <th><center>Bobot Sintesa</center></th>
-                            <th><center>Eigen Max</center></th>
-                        </tr></thead><tbody>";
+                            <th><center>Bobot Prioritas</center></th></tr></thead><tbody>";
+                        //     <th><center>Bobot Sintesa</center></th>
+                        //     <th><center>Eigen Max</center></th>
+                        // </tr></thead><tbody>";
         $i=0;
         foreach ($matrix3 as $key => $value) {
             $resultView .= "<tr>";
@@ -232,21 +232,21 @@ class RangkingController extends Controller
             }
             $resultView .="
                 <td><center>".$eigen[$key]."</center></td>
-                <td><center>".$bobotPrioritas[$key]."</center></td>
-                <td><center>".$sintesa[$key]."</center></td>
-                <td><center>".$eigenMax[$key]."</center></td>
-            </tr>";
+                <td><center>".$bobotPrioritas[$key]."</center></td></tr>";
+            //     <td><center>".$sintesa[$key]."</center></td>
+            //     <td><center>".$eigenMax[$key]."</center></td>
+            // </tr>";
             $i++;
         }
         $resultView .= "
             <tr>
                 <td colspan='8'><center>Total</center></td>
                 <td>$sumEigen</td>
-                <td>$sumBobotPrioritas</td>
-                <td></td>
-                <td>$sumEigenMax</td>
-            </tr>
-        ";
+                <td>$sumBobotPrioritas</td></tr>";
+        //         <td></td>
+        //         <td>$sumEigenMax</td>
+        //     </tr>
+        // ";
         $resultView .= '</tbody></table>';
 
         $resultView .= '<h4>Uji Konsistensi</h4>';
