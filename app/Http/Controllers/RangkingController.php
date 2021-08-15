@@ -240,7 +240,7 @@ class RangkingController extends Controller
         }
         $resultView .= "
             <tr>
-                <td colspan='8'><center>Total</center></td>
+                <td colspan='".($numObjekKriteria+1)."'><center>Total</center></td>
                 <td>$sumEigen</td>
                 <td>$sumBobotPrioritas</td></tr>";
         //         <td></td>
