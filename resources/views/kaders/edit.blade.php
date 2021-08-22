@@ -103,10 +103,11 @@
                   <div class="col-sm-9">
                     <input 
                       name="nomor_telepon" 
-                      type="text" 
+                      type="number"
                       class="form-control" 
                       placeholder="Nomor Telepon Yang Dapat Dihubungi"
-                      maxLength="16"
+                      max="9999999999999999"
+                      min="082000000000"
                       value="{{$kader->nomor_telepon}}"
                       required>
                   </div>
